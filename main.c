@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <stdbool.h>
+// begin of hell
 void printOptions()
 {
   printf("1. Spinning Thingy\n");
-  printf("2. TBD\n");
-  printf("3. TBD\n");
-  printf("4. TBD\n");
+  printf("2. Water\n");
+  printf("3. Elevator\n");
+  printf("4. Electric Car\n");
   printf("5. TBD\n");
   printf("6. Exit\n");
 }
@@ -174,6 +174,41 @@ double ElectricCar1(int Percen, int k)
     distanceAbleToTravel = 0;
   }
   return distanceAbleToTravel;
+}
+
+double ElectricCar2()
+{
+  int Battery = 100;
+  int n;
+  double distanceTraveled = 0;
+  while (Battery != 0)
+  {
+    scanf("%d", &n);
+    if (n > 0)
+    {
+      Battery = Battery - (n / 2.15);
+      distanceTraveled = distanceTraveled + n / 2.15;
+    }
+    if (n < 0)
+    {
+      Battery = Battery + (n / 10);
+      distanceTraveled = distanceTraveled + n;
+    }
+    if (n == 0)
+    {
+      Battery = Battery + 25;
+    }
+    if (Battery > 100)
+    {
+      Battery = 100;
+    }
+    if (Battery == 0)
+    {
+      break;
+    }
+  }
+  printf("%.1lf", distanceTraveled);
+  return 0;
 }
 
 /*
