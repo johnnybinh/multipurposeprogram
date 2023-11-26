@@ -1,4 +1,3 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 #include <stdbool.h>
 void printOptions()
@@ -118,6 +117,66 @@ int Elevator(int Weight, int FromFloor, int ToFloor)
 }
 
 /*
+This is the fucking worst code i've have ever written till this point
+It will probably fuck everything
+But im to tired to fix it
+TODO: Fix when i have energy to fix this shit
+(or someone else will do this)
+*/
+
+double ElectricCar1(int Percen, int k)
+{
+  int roadType = k;
+  int distanceAbleToTravel;
+  if (Percen > 50)
+  {
+    switch (roadType)
+    {
+    case 1:
+      // highway
+      distanceAbleToTravel = (Percen / 3) * 5;
+      break;
+
+    case 2:
+      Percen = Percen - 50;
+      distanceAbleToTravel = (Percen / 3.6) * 5 + (30 / 4.9) * 5 + (20 / 7) * 5;
+      break;
+    case 3:
+      Percen = Percen - 50;
+      distanceAbleToTravel = (Percen / 8) * 5 + (30 / 10.5) * 5;
+      break;
+      // leverage surface
+    case 4:
+      // mix
+      Percen = Percen - 50;
+      distanceAbleToTravel = (Percen / 4.4) * 5 + (30 / 5.3) * 5;
+    }
+  }
+  if (Percen < 50 && Percen > 20)
+  {
+    switch (roadType)
+    {
+    case 1:
+      distanceAbleToTravel = (Percen / 3) * 5;
+    case 2:
+      Percen = Percen - 20;
+      distanceAbleToTravel = (Percen / 4.9) * 5 + (20 / 7) * 5;
+    case 3:
+      Percen = Percen - 20;
+      distanceAbleToTravel = (Percen / 10.5) * 5;
+    case 4:
+      Percen = Percen - 20;
+      distanceAbleToTravel = (Percen / 5.3) * 5;
+    }
+  }
+  else
+  {
+    distanceAbleToTravel = 0;
+  }
+  return distanceAbleToTravel;
+}
+
+/*
 main program loop
 TODO: fix the input to be on 1 line
 */
@@ -142,10 +201,11 @@ int main()
       break;
     case 3:
       scanf("%d %d %d", &n, &x, &y);
-      printf("%d", Elevator(n, x, y));
+      printf("%d\n", Elevator(n, x, y));
       break;
     case 4:
-
+      scanf("%d %d", &n, &x);
+      printf("%.2lf", ElectricCar1(n, x));
       break;
     case 5:
 
