@@ -73,7 +73,6 @@ int Elevator(int Weight, int FromFloor, int ToFloor)
     {
       // Go Down
       ElecNeed = (Travel)*Weight * 5;
-      return ElecNeed;
     }
     else
     {
@@ -88,14 +87,12 @@ int Elevator(int Weight, int FromFloor, int ToFloor)
     {
       // Go Down
       ElecNeed = (Weight * Travel * 5) + (600 * Travel * 7);
-      return ElecNeed;
     }
     else
     {
       // Go up
       Travel = Travel / -1;
       ElecNeed = (Weight * Travel * 7) + (600 * Travel * 12);
-      return ElecNeed;
     }
   }
   else
@@ -107,17 +104,17 @@ int Elevator(int Weight, int FromFloor, int ToFloor)
       {
         // Go Down
         ElecNeed = (Weight * 5 * Travel) + (1000 * 5 * Travel) + (600 * 7 * Travel);
-        return ElecNeed;
       }
       if (Travel < 0)
       {
         // Go up
         Travel = Travel / -1;
         ElecNeed = (Weight * Travel * 7) + (1000 * 7 * Travel) + (600 * 12 * Travel);
-        return ElecNeed;
       }
     }
   }
+
+  return ElecNeed;
 }
 
 /*
