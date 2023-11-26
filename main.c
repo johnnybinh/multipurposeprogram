@@ -10,13 +10,20 @@ void printOptions()
   printf("5. TBD\n");
   printf("6. Exit\n");
 }
-
+/*
+Calculate Rotating Thingy
+*/
 double spinningThingy(double n)
 {
   double output = n * 0.1 * 360;
   return output;
 }
-
+/*
+Calculate Water Bills (Not accurate)
+TODO: This needs fixing, but this is not my project. The owner/submitter must be resposinble
+for any problems that this shit code might make
+PLEASE FIX THE BUGS BEFORE SUBMIT
+*/
 int WaterBills(int n, int x, int y)
 {
   int waterUsed, total;
@@ -51,35 +58,72 @@ int WaterBills(int n, int x, int y)
     return total;
   }
 }
+/*
+TODO: add more comment to make this code easier to read and maintain
+(which probably never be...)
+*/
+
 int Elevator(int Weight, int FromFloor, int ToFloor)
 {
   int ElecNeed;
+  int Travel = FromFloor - ToFloor;
   if (Weight <= 1000)
   {
-    if (FromFloor - ToFloor > 0)
+    if (Travel > 0)
     {
       // Go Down
-      ElecNeed = (FromFloor - ToFloor) * Weight * 5;
+      ElecNeed = (Travel)*Weight * 5;
       return ElecNeed;
     }
     else
     {
       // Go Up
-      ElecNeed = (FromFloor - ToFloor) / (-1) * Weight * 7;
+      ElecNeed = (Travel) / (-1) * Weight * 7;
     }
   }
   if (Weight > 1000 && Weight < 1600)
   {
-    if (FromFloor - ToFloor > 0)
+    Weight = Weight - 600;
+    if (Travel > 0)
     {
       // Go Down
+      ElecNeed = (Weight * Travel * 5) + (600 * Travel * 7);
+      return ElecNeed;
     }
     else
     {
+      // Go up
+      Travel = Travel / -1;
+      ElecNeed = (Weight * Travel * 7) + (600 * Travel * 12);
+      return ElecNeed;
+    }
+  }
+  else
+  {
+    if (Weight > 1600 && Weight <= 2600)
+    {
+      Weight = Weight - 1600;
+      if (Travel > 0)
+      {
+        // Go Down
+        ElecNeed = (Weight * 5 * Travel) + (1000 * 5 * Travel) + (600 * 7 * Travel);
+        return ElecNeed;
+      }
+      if (Travel < 0)
+      {
+        // Go up
+        Travel = Travel / -1;
+        ElecNeed = (Weight * Travel * 7) + (1000 * 7 * Travel) + (600 * 12 * Travel);
+        return ElecNeed;
+      }
     }
   }
 }
 
+/*
+main program loop
+TODO: fix the input to be on 1 line
+*/
 int main()
 {
   int exit = 0;
@@ -100,7 +144,8 @@ int main()
       printf("%d\n", WaterBills(n, x, y));
       break;
     case 3:
-
+      scanf("%d %d %d", &n, &x, &y);
+      printf("%d", Elevator(n, x, y));
       break;
     case 4:
 
