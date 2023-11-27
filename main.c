@@ -192,7 +192,7 @@ double ElectricCar2()
     if (n < 0)
     {
       Battery = Battery + (n / 10);
-      distanceTraveled = distanceTraveled + n;
+      distanceTraveled = distanceTraveled + n * (-1);
     }
     if (n == 0)
     {
@@ -229,21 +229,26 @@ int main()
     case 1:
       scanf("%d", &n);
       printf("%d\n", (int)spinningThingy(n));
+      exit = 1;
       break;
     case 2:
       scanf("%d %d %d", &n, &x, &y);
       printf("%d\n", WaterBills(n, x, y));
+      exit = 1;
       break;
     case 3:
       scanf("%d %d %d", &n, &x, &y);
       printf("%d\n", Elevator(n, x, y));
+      exit = 1;
       break;
     case 4:
       scanf("%d %d", &n, &x);
       printf("%.2lf", ElectricCar1(n, x));
+      exit = 1;
       break;
     case 5:
-
+      ElectricCar2();
+      exit = 1;
       break;
     case 6:
       exit = 1;
