@@ -1,5 +1,7 @@
 #include <stdio.h>
 // begin of hell
+
+//should be delete after finished
 void printOptions()
 {
   printf("1. Spinning Thingy\n");
