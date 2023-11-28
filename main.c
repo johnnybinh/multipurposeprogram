@@ -219,6 +219,7 @@ int main()
 {
   int exit = 0;
   int n, x, y, z;
+  double num1;
   int options;
   while (exit != 1)
   {
@@ -227,8 +228,8 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%d", &n);
-      printf("%d\n", (int)spinningThingy(n));
+      scanf("%lf", &num1);
+      printf("%d\n", (int)spinningThingy(num1));
       exit = 1;
       break;
     case 2:
