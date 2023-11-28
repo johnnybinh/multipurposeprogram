@@ -23,9 +23,9 @@ TODO: This needs fixing, but this is not my project. The owner/submitter must be
 for any problems that this shit code might make
 PLEASE FIX THE BUGS BEFORE SUBMIT
 */
-int WaterBills(int n, int x, int y)
+double WaterBills(int n, int x, int y)
 {
-  int waterUsed, total;
+  double waterUsed, total;
   if (n < 0)
   {
     return -1;
@@ -40,7 +40,7 @@ int WaterBills(int n, int x, int y)
     if (waterUsed < 4)
     {
       // Under 4
-      total = (waterUsed * 6700) * 135 / 100;
+      total = waterUsed * (6700 * 125/100 + 6700 * 20/100*10/100);
     }
     if (waterUsed >= 4 && waterUsed < 6)
     {
@@ -53,7 +53,6 @@ int WaterBills(int n, int x, int y)
       total = (waterUsed - 10) * 14400 + (6700 * 4 + 12900 * 6);
     }
 
-    total = total * ((1 + 0.05) + (1 + 0.1) + (1 + 0.2));
     return total;
   }
 }
@@ -234,7 +233,7 @@ int main()
       break;
     case 2:
       scanf("%d %d %d", &n, &x, &y);
-      printf("%d\n", WaterBills(n, x, y));
+      printf("%lf\n", WaterBills(n, x, y));
       exit = 1;
       break;
     case 3:
