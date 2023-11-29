@@ -15,10 +15,10 @@ void printOptions()
 Calculate Rotating Thingy
 */
 /*hashtag: begin of pain*/
-double spinningThingy(double n1, double n2) //are you nuts???? (fixed)//actually not that nuts :v
+double spinningThingy(double n2) //im sorry, you not nut, my bad
 {
   double output = 1;
-  if (n1 < 0 || n2 < 0)
+  if (n2 < 0)
   {
     output = -1;
   } else {
@@ -32,9 +32,12 @@ TODO: This needs fixing, but this is not my project. The owner/submitter must be
 for any problems that this shit code might make
 PLEASE FIX THE BUGS BEFORE SUBMIT
 */
-int WaterBills(int n, int x, int y)
+int WaterBills(int sv, int x, int y)
+//sv: human online
+//x: new number
+//y: old number
 {
-  int waterUsed, total;
+  int waterUsed = 0, total = 1;
   if (n < 0)
   {
     return -1;
@@ -70,6 +73,7 @@ int WaterBills(int n, int x, int y)
 TODO: add more comment to make this code easier to read and maintain
 (which probably never be...)
 */
+//Indeed
 
 int Elevator(int Weight, int FromFloor, int ToFloor)
 {
@@ -237,13 +241,13 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%lf %lf", &n1, &n2); //you son of the... 
-      printf("%d\n", (int)spinningThingy(n1, n2));
+      scanf("%lf", &n2); //you son of the... 
+      printf("%d\n", (int)spinningThingy(n2));
       exit = 1;
       break;
     case 2:
       scanf("%d %d %d", &n, &x, &y);
-      printf("%d\n", WaterBills(n, x, y));
+      printf("%d\n", WaterBills(sv, x, y));
       exit = 1;
       break;
     case 3:
