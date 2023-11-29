@@ -75,58 +75,63 @@ TODO: add more comment to make this code easier to read and maintain
 */
 //Indeed
 
-int Elevator(int Weight, int FromFloor, int ToFloor)
+int Elevator(int FromFloor, int ToFloor, int Weight)
 {
   int ElecNeed;
-  int Travel = FromFloor - ToFloor;
-  if (Weight <= 1000)
-  {
-    if (Travel > 0)
+  if (Weight > 0) {
+    int Travel = FromFloor - ToFloor;
+    if (Weight <= 1000)
     {
-      // Go Down
-      ElecNeed = (Travel)*Weight * 5;
-    }
-    else
-    {
-      // Go Up
-      ElecNeed = (Travel) / (-1) * Weight * 7;
-    }
-  }
-  if (Weight > 1000 && Weight < 1600)
-  {
-    Weight = Weight - 600;
-    if (Travel > 0)
-    {
-      // Go Down
-      ElecNeed = (Weight * Travel * 5) + (600 * Travel * 7);
-    }
-    else
-    {
-      // Go up
-      Travel = Travel / -1;
-      ElecNeed = (Weight * Travel * 7) + (600 * Travel * 12);
-    }
-  }
-  else
-  {
-    if (Weight > 1600 && Weight <= 2600)
-    {
-      Weight = Weight - 1600;
       if (Travel > 0)
       {
         // Go Down
-        ElecNeed = (Weight * 5 * Travel) + (1000 * 5 * Travel) + (600 * 7 * Travel);
+        ElecNeed = (Travel)*Weight * 5;
       }
-      if (Travel < 0)
+      else
+      {
+        // Go Up
+        ElecNeed = (Travel) / (-1) * Weight * 7;
+      }
+    }
+    if (Weight > 1000 && Weight <= 1600)
+    {
+      Weight = Weight - 1000;
+      if (Travel > 0)
+      {
+        // Go Down
+        ElecNeed = (Weight * Travel * 7) + (1000 * Travel * 5); //full the new one first, then the old one
+      }
+      else
       {
         // Go up
         Travel = Travel / -1;
-        ElecNeed = (Weight * Travel * 7) + (1000 * 7 * Travel) + (600 * 12 * Travel);
+        ElecNeed = (Weight * Travel * 12) + (1000 * Travel * 7); //full the new one first, then the old one
+      }
+    }
+    else
+    {
+      if (Weight > 1600 && Weight <= 2600)
+      {
+        Weight = Weight - 1600;
+        if (Travel > 0)
+        {
+          // Go Down
+          ElecNeed = (Weight * 5 * Travel) + (1000 * 5 * Travel) + (600 * 7 * Travel);
+        }
+        if (Travel < 0)
+        {
+          // Go up
+          Travel = Travel / -1;
+          ElecNeed = (Weight * Travel * 7) + (1000 * 7 * Travel) + (600 * 12 * Travel);
+        }
       }
     }
   }
-
-  return ElecNeed;
+  if (Weight < 0)
+  {
+    ElecNeed = -1;
+  }
+    return ElecNeed;
 }
 
 /*
