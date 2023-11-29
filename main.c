@@ -1,5 +1,7 @@
 #include <stdio.h>
 // begin of hell
+
+//should be delete after finished
 void printOptions()
 {
   printf("1. Spinning Thingy\n");
@@ -12,9 +14,16 @@ void printOptions()
 /*
 Calculate Rotating Thingy
 */
-double spinningThingy(double n)
+/*hashtag: begin of pain*/
+double spinningThingy(double n2) //im sorry, you not nut, my bad
 {
-  double output = n * 0.1 * 360;
+  double output = 1;
+  if (n2 < 0)
+  {
+    output = -1;
+  } else {
+    output = n2 * 36;
+  }
   return output;
 }
 /*
@@ -23,10 +32,13 @@ TODO: This needs fixing, but this is not my project. The owner/submitter must be
 for any problems that this shit code might make
 PLEASE FIX THE BUGS BEFORE SUBMIT
 */
-int WaterBills(int n, int x, int y)
+int WaterBills(int sv, int x, int y)
+//sv: human online
+//x: new number
+//y: old number
 {
-  int waterUsed, total;
-  if (n < 0)
+  int waterUsed = 0, total = 1;
+  if (sv < 0)
   {
     return -1;
   }
@@ -61,6 +73,7 @@ int WaterBills(int n, int x, int y)
 TODO: add more comment to make this code easier to read and maintain
 (which probably never be...)
 */
+//Indeed
 
 int Elevator(int Weight, int FromFloor, int ToFloor)
 {
@@ -219,6 +232,7 @@ int main()
 {
   int exit = 0;
   int n, x, y, z;
+  double n1,n2;
   int options;
   while (exit != 1)
   {
@@ -227,8 +241,8 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%d", &n);
-      printf("%d\n", (int)spinningThingy(n));
+      scanf("%lf", &n2); //you son of the... 
+      printf("%d\n", (int)spinningThingy(n2));
       exit = 1;
       break;
     case 2:
@@ -259,4 +273,3 @@ int main()
 
   return 0;
 }
-/*lmao trach dong*/
