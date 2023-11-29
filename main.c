@@ -38,7 +38,7 @@ int WaterBills(int sv, int x, int y)
 //y: old number
 {
   int waterUsed = 0, total = 1;
-  if (n < 0)
+  if (sv < 0)
   {
     return -1;
   }
@@ -247,7 +247,7 @@ int main()
       break;
     case 2:
       scanf("%d %d %d", &n, &x, &y);
-      printf("%d\n", WaterBills(sv, x, y));
+      printf("%d\n", WaterBills(n, x, y));
       exit = 1;
       break;
     case 3:
