@@ -237,7 +237,7 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%lf %lf", &n1, &n2);
+      scanf("%lf %lf", &n1, &n2); //you son of the... 
       printf("%d\n", (int)spinningThingy(n1, n2));
       exit = 1;
       break;
