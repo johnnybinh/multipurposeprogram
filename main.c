@@ -14,9 +14,16 @@ void printOptions()
 /*
 Calculate Rotating Thingy
 */
-double spinningThingy(double n)
+/*hashtag: begin of pain*/
+double spinningThingy(double n1, double n2) //are you nuts???? (fixed)//actually not that nuts :v
 {
-  double output = n * 0.1 * 360;
+  double output = 1;
+  if (n1 < 0 || n2 < 0)
+  {
+    output = -1;
+  } else {
+    output = n2 * 36;
+  }
   return output;
 }
 /*
@@ -221,6 +228,7 @@ int main()
 {
   int exit = 0;
   int n, x, y, z;
+  double n1,n2;
   int options;
   while (exit != 1)
   {
@@ -229,8 +237,8 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%d", &n);
-      printf("%d\n", (int)spinningThingy(n));
+      scanf("%lf %lf", &n1, &n2);
+      printf("%d\n", (int)spinningThingy(n1, n2));
       exit = 1;
       break;
     case 2:
@@ -261,4 +269,3 @@ int main()
 
   return 0;
 }
-/*lmao trach dong*/
