@@ -46,10 +46,10 @@ int WaterBills(int sv, int x, int y)
     if (WaterUsed <= 4 * sv){
       Total = WaterUsed * 6700;
     }
-    else if (WaterUsed <= 6*sv){
-      Total = 6700 * 4 * sv + (WaterUsed - 4*sv)*12900;
+    else if (WaterUsed <= 6 * sv){
+      Total = 6700 * 4 * sv + (WaterUsed - 4 * sv)*12900;
     }
-    else Total =6700 * 4 * sv + 12900 * 2 * sv + (WaterUsed - (2+4)*sv)*14400;
+    else Total =6700 * 4 * sv + 12900 * 2 * sv + (WaterUsed - 6 * sv)*14400;
   }
   Total = Total * 1.27;
   return Total;
@@ -129,52 +129,63 @@ TODO: Fix when i have energy to fix this shit
 
 double ElectricCar1(int Percen, int k)
 {
-  int roadType = k;
-  int distanceAbleToTravel;
+  float distanceAbleToTravel;
+  float temp = Percen;
   if (Percen > 50)
   {
-    switch (roadType)
+    switch (k)
     {
     case 1:
       // highway
-      distanceAbleToTravel = (Percen / 3) * 5;
+      distanceAbleToTravel = (temp / 3) * 5;
       break;
-
     case 2:
-      Percen = Percen - 50;
-      distanceAbleToTravel = (Percen / 3.6) * 5 + (30 / 4.9) * 5 + (20 / 7) * 5;
+    // town
+      distanceAbleToTravel = ((temp- 50) / 3.6) * 5 + ((30 / 4.9) * 5) + (20 / 7.0) * 5;
       break;
     case 3:
-      Percen = Percen - 50;
-      distanceAbleToTravel = (Percen / 8) * 5 + (30 / 10.5) * 5;
+      distanceAbleToTravel = ((temp - 50) / 8) * 5 + (30 / 10.5) * 5;
       break;
       // leverage surface
     case 4:
       // mix
-      Percen = Percen - 50;
-      distanceAbleToTravel = (Percen / 4.4) * 5 + (30 / 5.3) * 5;
+      distanceAbleToTravel = ((temp - 50) / 4.4) * 5 + (30 / 5.3) * 5;
     }
   }
-  if (Percen < 50 && Percen > 20)
+  if (Percen <= 50 && Percen >= 20)
   {
-    switch (roadType)
+    switch (k)
     {
     case 1:
-      distanceAbleToTravel = (Percen / 3) * 5;
+      // highway
+      distanceAbleToTravel = (temp / 3) * 5;
+      break;
     case 2:
-      Percen = Percen - 20;
-      distanceAbleToTravel = (Percen / 4.9) * 5 + (20 / 7) * 5;
+    // town
+      distanceAbleToTravel = ((temp - 20) / 10.5) * 5 + (20 / 7.0) * 5;
+      break;
     case 3:
-      Percen = Percen - 20;
-      distanceAbleToTravel = (Percen / 10.5) * 5;
+      distanceAbleToTravel = ((temp - 20) / 10.5) * 5;
+      break;
+      // leverage surface
     case 4:
-      Percen = Percen - 20;
-      distanceAbleToTravel = (Percen / 5.3) * 5;
+      // mix
+      distanceAbleToTravel = ((temp - 20) / 5.3) * 5;
     }
   }
-  else
+  if (Percen < 20)
   {
-    distanceAbleToTravel = 0;
+    switch (k)
+    {
+    case 1:
+      distanceAbleToTravel = (temp / 3) * 5;
+    case 2:
+      distanceAbleToTravel = (temp / 7) * 5;
+    case 3:
+      distanceAbleToTravel = 0;
+    case 4:
+      distanceAbleToTravel = 0;
+    }
   }
   return distanceAbleToTravel;
 }
