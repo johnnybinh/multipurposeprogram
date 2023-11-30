@@ -37,37 +37,22 @@ int WaterBills(int sv, int x, int y)
 //x: new number
 //y: old number
 {
-  int waterUsed = 0, total = 1;
-  if (sv < 0)
-  {
-    return -1;
+  int Total = 0, WaterUsed = 0;
+  if (x < y || sv < 0){
+    Total = -1;
   }
-  if (x < y)
-  {
-    return -1;
+  else {
+    WaterUsed = x - y;
+    if (WaterUsed <= 4 * sv){
+      Total = WaterUsed * 6700;
+    }
+    else if (WaterUsed <= 6*sv){
+      Total = 6700 * 4 * sv + (WaterUsed - 4*sv)*12900;
+    }
+    else Total =6700 * 4 * sv + 12900 * 2 * sv + (WaterUsed - (2+4)*sv)*14400;
   }
-  else
-  {
-    waterUsed = x - y;
-    if (waterUsed < 4)
-    {
-      // Under 4
-      total = (waterUsed * 6700) * 135 / 100;
-    }
-    if (waterUsed >= 4 && waterUsed < 6)
-    {
-      // Under 6
-      total = ((waterUsed - 4) * 12900) + (6700 * 4);
-    }
-    else
-    {
-      // Over 6
-      total = (waterUsed - 10) * 14400 + (6700 * 4 + 12900 * 6);
-    }
-
-    total = total * ((1 + 0.05) + (1 + 0.1) + (1 + 0.2));
-    return total;
-  }
+  Total = Total * 1.27;
+  return Total;
 }
 /*
 TODO: add more comment to make this code easier to read and maintain
