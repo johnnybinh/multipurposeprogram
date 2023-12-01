@@ -1,7 +1,7 @@
 #include <stdio.h>
 // begin of hell
 
-//should be delete after finished
+// should be delete after finished
 void printOptions()
 {
   printf("1. Spinning Thingy\n");
@@ -15,13 +15,15 @@ void printOptions()
 Calculate Rotating Thingy
 */
 /*hashtag: begin of pain*/
-double spinningThingy(double n2) //im sorry, you not nut, my bad
+double spinningThingy(double n2) // im sorry, you not nut, my bad
 {
   double output = 1;
   if (n2 < 0)
   {
     output = -1;
-  } else {
+  }
+  else
+  {
     output = n2 * 36;
   }
   return output;
@@ -33,23 +35,28 @@ for any problems that this shit code might make
 PLEASE FIX THE BUGS BEFORE SUBMIT
 */
 int WaterBills(int sv, int x, int y)
-//sv: human online
-//x: new number
-//y: old number
+// sv: human online
+// x: new number
+// y: old number
 {
   int Total = 0, WaterUsed = 0;
-  if (x < y || sv < 0){
+  if (x < y || sv < 0)
+  {
     Total = -1;
   }
-  else {
+  else
+  {
     WaterUsed = x - y;
-    if (WaterUsed <= 4 * sv){
+    if (WaterUsed <= 4 * sv)
+    {
       Total = WaterUsed * 6700;
     }
-    else if (WaterUsed <= 6 * sv){
-      Total = 6700 * 4 * sv + (WaterUsed - 4 * sv)*12900;
+    else if (WaterUsed <= 6 * sv)
+    {
+      Total = 6700 * 4 * sv + (WaterUsed - 4 * sv) * 12900;
     }
-    else Total =6700 * 4 * sv + 12900 * 2 * sv + (WaterUsed - 6 * sv)*14400;
+    else
+      Total = 6700 * 4 * sv + 12900 * 2 * sv + (WaterUsed - 6 * sv) * 14400;
   }
   Total = Total * 1.27;
   return Total;
@@ -58,12 +65,13 @@ int WaterBills(int sv, int x, int y)
 TODO: add more comment to make this code easier to read and maintain
 (which probably never be...)
 */
-//Indeed
+// Indeed
 
 int Elevator(int FromFloor, int ToFloor, int Weight)
 {
   int ElecNeed;
-  if (Weight > 0) {
+  if (Weight > 0)
+  {
     int Travel = FromFloor - ToFloor;
     if (Weight <= 1000)
     {
@@ -78,24 +86,22 @@ int Elevator(int FromFloor, int ToFloor, int Weight)
         ElecNeed = (Travel) / (-1) * Weight * 7;
       }
     }
-    if (Weight > 1000 && Weight <= 1600)
+    else if (Weight > 1000 && Weight <= 1600)
     {
       Weight = Weight - 1000;
       if (Travel > 0)
       {
         // Go Down
-        ElecNeed = (Weight * Travel * 7) + (1000 * Travel * 5); //full the new one first, then the old one
+        ElecNeed = (Weight * Travel * 7) + (1000 * Travel * 5); // full the new one first, then the old one
       }
       else
       {
         // Go up
         Travel = Travel / -1;
-        ElecNeed = (Weight * Travel * 12) + (1000 * Travel * 7); //full the new one first, then the old one
+        ElecNeed = (Weight * Travel * 12) + (1000 * Travel * 7); // full the new one first, then the old one
       }
     }
-    else
-    {
-      if (Weight > 1600 && Weight <= 2600)
+    else if (Weight > 1600 && Weight <= 2600)
       {
         Weight = Weight - 1600;
         if (Travel > 0)
@@ -110,13 +116,12 @@ int Elevator(int FromFloor, int ToFloor, int Weight)
           ElecNeed = (Weight * Travel * 7) + (1000 * 7 * Travel) + (600 * 12 * Travel);
         }
       }
-    }
   }
-  if (Weight < 0)
+  else if (Weight < 0)
   {
     ElecNeed = -1;
   }
-    return ElecNeed;
+  return ElecNeed;
 }
 
 /*
@@ -140,8 +145,8 @@ double ElectricCar1(int Percen, int k)
       distanceAbleToTravel = (temp / 3) * 5;
       break;
     case 2:
-    // town
-      distanceAbleToTravel = ((temp- 50) / 3.6) * 5 + ((30 / 4.9) * 5) + (20 / 7.0) * 5;
+      // town
+      distanceAbleToTravel = ((temp - 50) / 3.6) * 5 + ((30 / 4.9) * 5) + (20 / 7.0) * 5;
       break;
     case 3:
       distanceAbleToTravel = ((temp - 50) / 8) * 5 + (30 / 10.5) * 5;
@@ -161,7 +166,7 @@ double ElectricCar1(int Percen, int k)
       distanceAbleToTravel = (temp / 3) * 5;
       break;
     case 2:
-    // town
+      // town
       distanceAbleToTravel = ((temp - 20) / 10.5) * 5 + (20 / 7.0) * 5;
       break;
     case 3:
@@ -190,39 +195,30 @@ double ElectricCar1(int Percen, int k)
   return distanceAbleToTravel;
 }
 
-double ElectricCar2()
+void ElectricCar2()
 {
   int Battery = 100;
-  int n;
+  int DistanceMove;
   double distanceTraveled = 0;
   while (Battery != 0)
   {
-    scanf("%d", &n);
-    if (n > 0)
+    scanf("%d", &DistanceMove);
+    if (DistanceMove > 0)
     {
-      Battery = Battery - (n / 2.15);
-      distanceTraveled = distanceTraveled + n / 2.15;
+      Battery = Battery - (DistanceMove / 2.15);
+      distanceTraveled = distanceTraveled + DistanceMove / 2.15;
     }
-    if (n < 0)
+    if (DistanceMove < 0)
     {
-      Battery = Battery + (n / 10);
-      distanceTraveled = distanceTraveled + n * (-1);
+      Battery = Battery + (DistanceMove / 10);
+      distanceTraveled = distanceTraveled + DistanceMove * (-1);
     }
-    if (n == 0)
+    if (DistanceMove == 0)
     {
       Battery = Battery + 25;
     }
-    if (Battery > 100)
-    {
-      Battery = 100;
-    }
-    if (Battery == 0)
-    {
-      break;
-    }
   }
   printf("%.1lf", distanceTraveled);
-  return 0;
 }
 
 /*
@@ -233,7 +229,7 @@ int main()
 {
   int exit = 0;
   int n, x, y, z;
-  double n1,n2;
+  double n2;
   int options;
   while (exit != 1)
   {
@@ -242,7 +238,7 @@ int main()
     switch (options)
     {
     case 1:
-      scanf("%lf", &n2); //you son of the... 
+      scanf("%lf", &n2); // you son of the...
       printf("%d\n", (int)spinningThingy(n2));
       exit = 1;
       break;
